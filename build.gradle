@@ -1,0 +1,7 @@
+// gradle.org
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+wrapper {  gradleVersion = "2.2" }
