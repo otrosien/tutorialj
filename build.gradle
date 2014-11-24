@@ -5,3 +5,13 @@ apply plugin: 'eclipse'
 apply plugin: 'maven'
 
 wrapper {  gradleVersion = "2.2" }
+
+repositories {
+    maven { url project.properties['artifactory_repo_url'] }
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    testCompile "junit:junit:4.12-beta-3"
+}
