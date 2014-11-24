@@ -4,6 +4,10 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 
+sourceCompatibility = 1.8
+group = "com.epages"
+version = "0.0.1"
+
 wrapper {  gradleVersion = "2.2" }
 
 repositories {
