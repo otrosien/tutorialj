@@ -5,3 +5,15 @@ apply plugin: 'eclipse'
 apply plugin: 'maven'
 
 wrapper {  gradleVersion = "2.2.1"}
+
+repositories {
+	maven { 
+		url = project.properties['artifactory_url']
+    }
+	//mavenCentral() 
+}
+
+dependencies {
+	compile "com.epages:epagesj-server:6.17.13-SNAPSHOT"
+	testCompile "junit:junit:4.11"
+}
