@@ -14,6 +14,6 @@ repositories {
 }
 
 dependencies {
-	compile "com.epages:epagesj-server:6.17.13-SNAPSHOT"
+	compile "com.epages:epagesj-rest:6.17.13-SNAPSHOT"
 	testCompile "junit:junit:4.11"
 }

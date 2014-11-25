@@ -3,6 +3,7 @@ package oceanj;
 import org.apache.commons.configuration.Configuration;
 
 import com.epages.plugin.PluginServiceLoaderFactory;
+import com.epages.server.EmbeddedServer;
 import com.google.inject.Injector;
 
 public class OceanjStart {
@@ -17,6 +18,11 @@ public class OceanjStart {
 		InterfaceX x2 = injector.getInstance(InterfaceX.class);
 		System.out.println(x2.toString());
 		System.out.println(x.hello());
+		
+		
+		//Server
+		EmbeddedServer server = injector.getInstance(EmbeddedServer.class);
+		server.start();
 	}
 
 }
