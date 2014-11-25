@@ -4,4 +4,4 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 
-wrapper {  gradleVersion = "2.2" }
+wrapper {  gradleVersion = "2.2.1"}
