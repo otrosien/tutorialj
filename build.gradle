@@ -1,8 +1,7 @@
-// gradle.org
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
+apply plugin: 'application'
 
 wrapper {  gradleVersion = "2.2.1"}
 
@@ -10,10 +9,45 @@ repositories {
 	maven { 
 		url = project.properties['artifactory_url']
     }
-	//mavenCentral() 
 }
 
 dependencies {
-	compile "com.epages:epagesj-rest:6.17.13-SNAPSHOT"
-	testCompile "junit:junit:4.11"
+    // use changing:true while developing against a snapshot
+	compile group:"com.epages", name:"epagesj-epagesj-server-base", version:"6.17.13-SNAPSHOT", changing: true
+	testCompile "junit:junit:4.12"
 }
+
+version = '1.0'
+mainClassName = "tutorial.TutorialStart"
+
+applicationDefaultJvmArgs = [
+	"-Dlogback.configurationFile=conf/logback-${project.name}.xml",
+	"-DServer.requestLoggerEnabled=true",
+    "-XX:+PrintCommandLineFlags",
+    "-XX:+UseG1GC",
+    "-XX:+PrintGCDetails",
+    "-XX:+PrintGCDateStamps",
+    "-Xloggc:logs/${project.name}_gc.log",
+    "-Dfile.encoding=UTF-8"
+]
+
+
+jar {
+    manifest.attributes('Main-Class': mainClassName)
+}
+
+task assembleManifestClasspath {
+    doLast {
+        jar {
+            manifest.attributes("Class-Path": configurations.runtime.collect { "../lib/${it.name}" }.join(' '))
+        }
+    }
+}
+
+jar.dependsOn assembleManifestClasspath
+
+applicationDistribution.into('conf') {
+    from(project.file('conf'))
+}
+
+// TODO add empty logs dir
