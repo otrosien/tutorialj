@@ -1,4 +1,4 @@
-oceanj
+tutorialj
 ======
 
-EPagesJ Tutorial for Team Ocean
+EPagesJ Tutorial
